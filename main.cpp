@@ -8,12 +8,18 @@ class MyComplex {
     friend MyComplex operator+(MyComplex v1, MyComplex v2);
     friend MyComplex operator+(MyComplex v1, double v2);
     friend MyComplex operator+(double v1, MyComplex v2);
+    friend MyComplex operator+(MyComplex v1, int v2);
+    friend MyComplex operator+(int v1, MyComplex v2);
     friend MyComplex operator-(MyComplex v1, MyComplex v2);
     friend MyComplex operator-(MyComplex v1, double v2);
     friend MyComplex operator-(double v1, MyComplex v2);
+    friend MyComplex operator-(MyComplex v1, int v2);
+    friend MyComplex operator-(int v1, MyComplex v2);
     friend MyComplex operator*(MyComplex v1, MyComplex v2);
     friend MyComplex operator*(MyComplex v1, double v2);
     friend MyComplex operator*(double v1, MyComplex v2);
+    friend MyComplex operator*(MyComplex v1, int v2);
+    friend MyComplex operator*(int v1, MyComplex v2);
     friend ostream& operator<<(ostream &o, MyComplex B);
     friend istream& operator>>(istream &i, MyComplex &B);
 
@@ -62,6 +68,17 @@ MyComplex operator+(MyComplex v1, double v2){
     return C;
 }
 
+MyComplex operator+(int v1, MyComplex v2){
+    return (v2+v1);
+}
+
+MyComplex operator+(MyComplex v1, int v2){
+    MyComplex C;
+    C.setRe(v1.getRe()+v2);
+    C.setIm(v1.getIm());
+    return C;
+}
+
 MyComplex operator+(double v1, MyComplex v2){
     return (v2+v1);
 }
@@ -84,6 +101,17 @@ MyComplex operator-(double v1, MyComplex v2){
     return (v2-v1);
 }
 
+MyComplex operator-(MyComplex v1, int v2){
+    MyComplex C;
+    C.setRe(v1.getRe()-v2);
+    C.setIm(v1.getIm());
+    return C;
+}
+
+MyComplex operator-(int v1, MyComplex v2){
+    return (v2-v1);
+}
+
 MyComplex operator*(MyComplex v1, MyComplex v2){
     MyComplex C;
     C.setRe(v1.getRe()*v2.getRe()-v1.getIm()*v2.getIm());
@@ -101,6 +129,19 @@ MyComplex operator*(MyComplex v1, double v2){
 MyComplex operator*(double v1, MyComplex v2){
     return (v2*v1);
 }
+
+MyComplex operator*(int v1, MyComplex v2){
+    return (v2*v1);
+}
+
+MyComplex operator*(MyComplex v1, int v2){
+    MyComplex C;
+    C.setRe(v1.getRe()*v2);
+    C.setIm(v1.getIm()*v2);
+    return C;
+}
+
+
 
 ostream& operator<<(ostream  &o, MyComplex B){
     if(B.getIm()<0)
